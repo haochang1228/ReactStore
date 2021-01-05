@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from 'components/Header';
-import Product from 'components/Product';
+import Products from 'components/Products';
 
 class App extends React.Component{
     render(){
         return(
             <div className="main">
-                <Header nickname="Admin" />
-                <Product />
+                <Header nickname="Admin" age={28} marry={true} />
+                <Products />
             </div>
         );
     }

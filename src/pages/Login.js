@@ -6,6 +6,14 @@ import React, {Fregment} from 'react';
 
 class Login extends React.Component {
 
+//受控組件
+
+//非受控組件
+state = {
+  email: '',
+  password:''
+};
+
 emailRef = React.createRef()
 passwordRef = React.createRef()
 
@@ -15,16 +23,20 @@ handleSubmit = event =>{
   event.preventDefault();
 
   //2.獲取表單數據
-  const formData={
-    email: this.emailRef.current.value,
-    password: this.passwordRef.current.value
-  }
-  
+  console.log(this.state);
 
   //3.處理登入服務
 
   //4.跳轉到首頁
-  this.props.history.push('/');
+  //this.props.history.push('/');
+}
+
+handleChange = e =>{
+  console.log(e.target.value);
+  console.log(e.target.name);
+  this.setState({
+    [e.target.name]: e.target.value
+  })
 }
 
     render(){
@@ -36,13 +48,25 @@ handleSubmit = event =>{
             <div className="field">
               <label className="label">Email</label>
               <div className="control">
-                <input className="input" type="text" placeholder="Email" ref={this.emailRef} />
+                <input className="input" 
+                       type="text" 
+                       placeholder="Email"
+                       name="email"
+                       value={this.state.email}
+                       onChange={this.handleChange}          
+                />
               </div>
             </div>
             <div className="field">
               <label className="label">Password</label>
               <div className="control">
-                <input className="input" type="text" placeholder="Password" ref={this.passwordRef}/>
+                <input className="input" 
+                       type="text" 
+                       placeholder="Password" 
+                       name="password"
+                       value={this.state.password}
+                       onChange={this.handleChange}  
+                />
               </div>
             </div>
             <div className="control">
